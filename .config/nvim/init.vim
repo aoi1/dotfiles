@@ -44,3 +44,38 @@ if dein#check_install()
 endif
 "End dein Scripts-------------------------
 
+" tender
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+syntax enable
+colorscheme tender
+
+set number
+
+" 改行時に前の行のインデントを継続する
+set autoindent
+" tabを半角スペースで挿入する
+set expandtab
+" 空白文字の可視化
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" ターミナルのタイトルをセットする
+set title
+" タブ幅
+set tabstop=4
+
+" markdown viewer
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'open -a Firefox'
+
+" vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
