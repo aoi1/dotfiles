@@ -15,3 +15,6 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'chr4/nginx.vim'
