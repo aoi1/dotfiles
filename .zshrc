@@ -3,6 +3,7 @@
 autoload -Uz promptinit
 promptinit
 prompt adam1
+export TERM=xterm-256color
 
 ### zsh options###
 setopt histignorealldups sharehistory

@@ -36,7 +36,7 @@ filetype plugin indent on
 syntax enable
 
 " デフォルトでNERDTree表示
-autocmd VimEnter * execute 'NERDTree'
+" autocmd VimEnter * execute 'NERDTree'
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
@@ -79,20 +79,35 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" lightline
+set noshowmode
 let g:lightline = {
+  \'colorscheme':'wombat',
   \'active': {
   \  'left': [
   \    ['mode', 'paste'],
-  \    ['readonly', 'filename', 'modified'],
+  \    ['fugitive', 'filename'],
   \    ['ale'],
   \  ]
   \},
   \'component_function': {
-  \  'ale': 'ALEStatus'
+  \  'fugitive': 'MyFugitive',
+  \  'ale': 'MyALEStatus'
   \}
 \ }
 
-function! ALEStatus()
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
+      return ' ' . fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyALEStatus()
   return ALEGetStatusLine()
 endfunction
 
