@@ -42,6 +42,12 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# === PECO ===
+function find_cd() {
+    cd "$(find . -type d | peco)"  
+}
+# === end PECO ===
+
 # === ALIAS ===
 # general
 alias ll='ls -l'
@@ -65,6 +71,9 @@ alias dp='docker ps -a'
 # ansible
 alias ap='ansible-playbook'
 alias api='ansible-playbook -i'
+
+# peco
+alias fc="find_cd"
 
 # === end ALIAS ===
 
