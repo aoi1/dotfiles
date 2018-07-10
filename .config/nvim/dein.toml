@@ -18,3 +18,9 @@ repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
+
+[[plugins]]
+repo = 'moncho/dry'
+
+[[plugins]]
+repo = 'kana/vim-submode'

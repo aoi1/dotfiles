@@ -16,8 +16,8 @@ setopt auto_pushd
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
@@ -46,6 +46,17 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 function find_cd() {
     cd "$(find . -type d | peco)"  
 }
+
+alias fc='find_cd'
+
+function peco-history-selection() {
+    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
+    CURSOR=$#BUFFER             # カーソルを文末に移動
+    zle -R -c                   # refresh<Paste>
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 # === end PECO ===
 
 # === ALIAS ===
@@ -72,8 +83,13 @@ alias dp='docker ps -a'
 alias ap='ansible-playbook'
 alias api='ansible-playbook -i'
 
-# peco
-alias fc="find_cd"
+# aws
+alias aws3l='aws s3 ls'
+alias awcfl='aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE'
+alias awcfd='aws cloudformation delete-stack --stack-name'
+
+# others
+alias n='nvim'
 
 # === end ALIAS ===
 
@@ -90,3 +106,5 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 # === end vcs_info ===
+
+[ -f ~/.zshrc.work ] && source ~/.zshrc.work
