@@ -89,7 +89,7 @@ alias awcfl='aws cloudformation list-stacks --stack-status-filter CREATE_COMPLET
 alias awcfd='aws cloudformation delete-stack --stack-name'
 
 # others
-alias n='nvim'
+alias nv='nvim'
 
 # === end ALIAS ===
 

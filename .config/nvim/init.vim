@@ -65,6 +65,9 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set title
 " タブ幅
 set tabstop=4
+" オートインデント時にインデントする文字数
+set tabstop=2
+set shiftwidth=2
 
 " markdown viewer
 au BufRead,BufNewFile *.md set filetype=markdown
