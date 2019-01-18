@@ -24,3 +24,6 @@ repo = 'moncho/dry'
 
 [[plugins]]
 repo = 'kana/vim-submode'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
