@@ -27,3 +27,9 @@ repo = 'kana/vim-submode'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
