@@ -12,3 +12,12 @@ repo = 'scrooloose/syntastic.git'
 
 [[plugins]]
 repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tell-k/vim-autopep8'
+
+[[plugins]]
+repo = 'deris/vim-duzzle'
