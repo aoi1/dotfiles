@@ -35,9 +35,6 @@ endif
 filetype plugin indent on
 syntax enable
 
-" デフォルトでNERDTree表示
-" autocmd VimEnter * execute 'NERDTree'
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
@@ -52,8 +49,10 @@ endif
 syntax enable
 colorscheme tender
 
+" 横に行数を表示する
 set number
-
+" スペルチェックを実施する
+set spell
 " 改行時に前の行のインデントを継続する
 set autoindent
 " tabを半角スペースで挿入する
