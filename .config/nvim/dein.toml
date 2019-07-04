@@ -32,4 +32,13 @@ repo = 'thinca/vim-quickrun'
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'

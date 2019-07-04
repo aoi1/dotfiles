@@ -41,13 +41,7 @@ if dein#check_install()
 endif
 "End dein Scripts-------------------------
 
-" tender
-if (has("termguicolors"))
- set termguicolors
-endif
-
 syntax enable
-colorscheme tender
 
 " 横に行数を表示する
 set number
@@ -90,30 +84,25 @@ let g:lightline = {
   \  'left': [
   \    ['mode', 'paste'],
   \    ['fugitive', 'filename'],
-  \    ['ale'],
   \  ]
   \},
-  \'component_function': {
-  \  'fugitive': 'MyFugitive',
-  \  'ale': 'MyALEStatus'
-  \}
 \ }
 
-function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
-      return ' ' . fugitive#head()
-    endif
-  catch
-  endtry
-  return ''
+" linterの設定
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
 endfunction
 
-function! MyALEStatus()
-  return ALEGetStatusLine()
-endfunction
-
-let g:ale_statusline_format = ['💀 %d', '⚠ %d', '😉  ok']
+set statusline=%{LinterStatus()}
 
 " noremap
 nnoremap s <Nop>
@@ -153,6 +142,9 @@ call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " lspの設定
+" 他のlinterと競合しないための設定
+" let g:lsp_diagnostics_enabled = 0
+" pip install python-language-serverが必要
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -160,3 +152,6 @@ if executable('pyls')
         \ 'whitelist': ['python'],
         \ })
 endif
+
+set background=dark
+colorscheme hybrid

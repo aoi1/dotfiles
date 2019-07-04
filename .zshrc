@@ -88,6 +88,10 @@ alias aws3l='aws s3 ls'
 alias awcfl='aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE'
 alias awcfd='aws cloudformation delete-stack --stack-name'
 
+# files
+alias ivim='nvim ~/.config/nvim/init.vim'
+alias dein='nvim ~/.config/nvim/dein.toml'
+
 # others
 alias nv='nvim'
 
