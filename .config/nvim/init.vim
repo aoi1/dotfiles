@@ -61,6 +61,7 @@ set tabstop=4
 " オートインデント時にインデントする文字数
 set tabstop=2
 set shiftwidth=2
+set clipboard=unnamed
 
 " markdown viewer
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -154,4 +155,6 @@ if executable('pyls')
 endif
 
 set background=dark
+let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
+syntax on

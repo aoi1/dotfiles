@@ -94,6 +94,9 @@ alias dein='nvim ~/.config/nvim/dein.toml'
 
 # others
 alias nv='nvim'
+alias kc='kubectl'
+alias kcg='kubectl get'
+alias kca='kubectl apply'
 
 # === end ALIAS ===
 
