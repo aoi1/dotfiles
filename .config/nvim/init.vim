@@ -1,4 +1,4 @@
-"dein Scripts-----------------------------
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -154,7 +154,9 @@ if executable('pyls')
         \ })
 endif
 
+" spellbadの色が鬱陶しいので変える
+autocmd ColorScheme * highlight SpellBad ctermbg=235 guibg=403D3D ctermfg=239 guifg=#465457
 set background=dark
 let g:hybrid_use_iTerm_colors = 1
+syntax enable
 colorscheme hybrid
-syntax on
