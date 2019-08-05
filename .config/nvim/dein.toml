@@ -42,3 +42,9 @@ repo = 'prabirshrestha/vim-lsp'
 
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'

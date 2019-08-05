@@ -1,4 +1,6 @@
 # Set up the prompt
+GOPATH=/Users/a001546/go
+PATH=$PATH:$GOPATH/bin
 
 autoload -Uz promptinit
 promptinit

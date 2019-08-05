@@ -45,8 +45,6 @@ syntax enable
 
 " 横に行数を表示する
 set number
-" スペルチェックを実施する
-set spell
 " 改行時に前の行のインデントを継続する
 set autoindent
 " tabを半角スペースで挿入する
@@ -160,3 +158,6 @@ set background=dark
 let g:hybrid_use_iTerm_colors = 1
 syntax enable
 colorscheme hybrid
+
+" syntax highlighting
+filetype plugin indent on
