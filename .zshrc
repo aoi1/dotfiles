@@ -96,9 +96,10 @@ alias dein='nvim ~/.config/nvim/dein.toml'
 
 # others
 alias nv='nvim'
-alias kc='kubectl'
-alias kcg='kubectl get'
-alias kca='kubectl apply'
+alias k='kubectl'
+alias kg='kubectl get'
+alias ka='kubectl apply'
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 
 # === end ALIAS ===
 
@@ -115,5 +116,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 # === end vcs_info ===
+#
+set helplang=ja,en
 
 [ -f ~/.zshrc.work ] && source ~/.zshrc.work
