@@ -63,7 +63,7 @@ set clipboard=unnamed
 
 " markdown viewer
 au BufRead,BufNewFile *.md set filetype=markdown
-let g:previm_open_cmd = 'open -a Firefox'
+let g:previm_open_cmd = "open -a Google\ Chrome"
 
 " vim-syntastic
 set statusline+=%#warningmsg#
@@ -161,3 +161,13 @@ colorscheme hybrid
 
 " syntax highlighting
 filetype plugin indent on
+
+" Go
+let mapleader = "\<Space>"
+
+au FileType go nmap <leader>s <Plug>(go-def-split)
+au FileType go nmap <leader>v <Plug>(go-def-vertical)
+
+" autofmt
+:set formatexpr=autofmt#japanese#formatexpr()  " kaoriya版では設定済み
+:let autofmt_allow_over_tw=1                   " 全角文字がぶら下がりで1カラムはみ出すのを許可

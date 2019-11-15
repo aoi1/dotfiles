@@ -48,3 +48,12 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
