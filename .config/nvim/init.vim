@@ -61,48 +61,6 @@ set tabstop=2
 set shiftwidth=2
 set clipboard=unnamed
 
-" markdown viewer
-au BufRead,BufNewFile *.md set filetype=markdown
-let g:previm_open_cmd = "open -a Google\ Chrome"
-
-" vim-syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" lightline
-set noshowmode
-let g:lightline = {
-  \'colorscheme':'wombat',
-  \'active': {
-  \  'left': [
-  \    ['mode', 'paste'],
-  \    ['fugitive', 'filename'],
-  \  ]
-  \},
-\ }
-
-" linterの設定
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline=%{LinterStatus()}
-
 " noremap
 nnoremap s <Nop>
 nnoremap sj <C-w>j
@@ -130,6 +88,7 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+nnoremap <Leader>r :<C-U>QuickRun<CR>
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
@@ -139,18 +98,6 @@ call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-
-" lspの設定
-" 他のlinterと競合しないための設定
-" let g:lsp_diagnostics_enabled = 0
-" pip install python-language-serverが必要
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
 
 " spellbadの色が鬱陶しいので変える
 autocmd ColorScheme * highlight SpellBad ctermbg=235 guibg=403D3D ctermfg=239 guifg=#465457
@@ -164,10 +111,12 @@ filetype plugin indent on
 
 " Go
 let mapleader = "\<Space>"
-
 au FileType go nmap <leader>s <Plug>(go-def-split)
 au FileType go nmap <leader>v <Plug>(go-def-vertical)
+let g:go_metalinter_autosave = 1
 
 " autofmt
 :set formatexpr=autofmt#japanese#formatexpr()  " kaoriya版では設定済み
 :let autofmt_allow_over_tw=1                   " 全角文字がぶら下がりで1カラムはみ出すのを許可
+
+:let g:previm_open_cmd = 'open -a Safari'
