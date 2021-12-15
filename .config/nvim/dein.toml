@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-
-[[plugins]]
 repo = 'jacoborus/tender.vim'
 
 [[plugins]]
@@ -12,9 +9,6 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
@@ -29,31 +23,22 @@ repo = 'kana/vim-submode'
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-
-[[plugins]]
 repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
+
+[[plugins]]
+repo = 'previm/previm'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'fatih/vim-go'
