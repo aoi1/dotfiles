@@ -41,4 +41,34 @@ repo = 'previm/previm'
 repo = 'SirVer/ultisnips'
 
 [[plugins]]
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+
+[[plugins]]
 repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'
+
+[[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+
+[[plugins]]
+repo = 'williamboman/nvim-lsp-installer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'

@@ -120,3 +120,97 @@ let g:go_metalinter_autosave = 1
 :let autofmt_allow_over_tw=1                   " 全角文字がぶら下がりで1カラムはみ出すのを許可
 
 :let g:previm_open_cmd = 'open -a Safari'
+
+" LSP settings
+" "ray-x/go.nvim
+"autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+"lua << EOF
+"require'lspconfig'.gopls.setup{}
+"require "lsp_signature".setup({
+"    bind = true, -- This is mandatory, otherwise border config won't get registered.
+"    handler_opts = {
+"      border = "rounded"
+"    }
+"  })
+"EOF
+"
+set completeopt=menu,menuone,noselect
+lua << EOF
+local lsp_installer = require("nvim-lsp-installer")
+local servers = {
+  "gopls",
+}
+
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
+
+  -- `sumneko_lua` をinstallしているなら `hello world` を表示します。
+  if server.name == 'sumneko_lua' then
+    print('hello world')
+  end
+
+  -- serverに対応しているfiletypeのbufferを開いたら、
+  -- 実行するfunctionを設定します。
+  -- sumneko_luaはluaのLSP serverなので、
+  -- luaのbufferを開いたら、実行するfunctionです。
+  opts.on_attach = function(client,buffer_number)
+    print(vim.inspect(client))
+    print(buffer_number)
+  end
+
+  -- LSPのsetupをします。
+  -- setupをしないとserverは動作しません。
+  server:setup(opts)
+end)
+
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'ultisnips' }, -- For ultisnips users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
+EOF
