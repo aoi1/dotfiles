@@ -2,7 +2,7 @@
 dotfiles
 
 ## ターミナル
-ターミナルはなんでも良いが、今はHyper[https://hyper.is/]を使用している。
+ターミナルはなんでも良いが、今は[Hyper](https://hyper.is/)を使用している。
 
 ## NeoVim
 NeoVimを利用することを前提としている。install scriptを実行する前にインストールしておく必要がある。
