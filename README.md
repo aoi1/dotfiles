@@ -8,6 +8,11 @@ dotfiles
 NeoVimを利用することを前提としている。install scriptを実行する前にインストールしておく必要がある。
 https://github.com/neovim/neovim/wiki/Installing-Neovim
 
+あとpython3関連モジュールも必要
+```
+python3 -m pip install --user --upgrade pynvim
+```
+
 ファイル配置前に以下のインストールをしてください
 
 - dein.vim
