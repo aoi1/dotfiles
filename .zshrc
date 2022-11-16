@@ -1,6 +1,6 @@
 # Set up the prompt
 GOPATH=${HOME}/go
-PATH=$PATH:$GOPATH/bin/:usr/local/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/github.com/yakumo/tools/yakumo
+PATH=$PATH:$GOPATH/bin/:usr/local/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/:/opt/homebrew/bin
 JAVA_HOME=$(/usr/libexec/java_home -v 11)
 GO111MODULE=on
 
@@ -98,7 +98,7 @@ alias ivim='nvim ~/.config/nvim/init.vim'
 alias dein='nvim ~/.config/nvim/dein.toml'
 
 # others
-alias nv='/usr/local/bin/nvim-osx64/bin/nvim'
+alias nv='nvim'
 alias k='kubectl'
 alias kg='kubectl get'
 alias ka='kubectl apply'
