@@ -13,6 +13,7 @@ https://github.com/neovim/neovim/wiki/Installing-Neovim
 python3 -m pip install --user --upgrade pynvim
 ```
 
+
 ファイル配置前に以下のインストールをしてください
 
 - dein.vim
