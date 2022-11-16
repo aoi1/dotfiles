@@ -1,5 +1,10 @@
 # Set up the prompt
+GOPATH=${HOME}/go
+PATH=$PATH:$GOPATH/bin/:usr/local/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/:/opt/homebrew/bin
+JAVA_HOME=$(/usr/libexec/java_home -v 11)
+GO111MODULE=on
 
+export PS1="aoi "
 autoload -Uz promptinit
 promptinit
 # prompt adam1
@@ -29,7 +34,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -72,7 +77,7 @@ alias gdh='git diff HEAD'
 alias gds='git diff --stat'
 alias gp='git pull'
 alias gst='git status'
-alias 
+alias gs='git switch'
 
 # docker
 alias de='docker exec -it'
@@ -88,8 +93,16 @@ alias aws3l='aws s3 ls'
 alias awcfl='aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE'
 alias awcfd='aws cloudformation delete-stack --stack-name'
 
+# files
+alias ivim='nvim ~/.config/nvim/init.vim'
+alias dein='nvim ~/.config/nvim/dein.toml'
+
 # others
 alias nv='nvim'
+alias k='kubectl'
+alias kg='kubectl get'
+alias ka='kubectl apply'
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 
 # === end ALIAS ===
 
@@ -106,5 +119,9 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 # === end vcs_info ===
+#
+set helplang=ja,en
 
 [ -f ~/.zshrc.work ] && source ~/.zshrc.work
+
+eval "$(starship init zsh)"

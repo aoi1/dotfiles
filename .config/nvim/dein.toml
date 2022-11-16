@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-
-[[plugins]]
 repo = 'jacoborus/tender.vim'
 
 [[plugins]]
@@ -12,9 +9,6 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
@@ -29,7 +23,52 @@ repo = 'kana/vim-submode'
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
+repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
+
+[[plugins]]
+repo = 'previm/previm'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'
+
+[[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+
+[[plugins]]
+repo = 'williamboman/nvim-lsp-installer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'

@@ -1,37 +1,21 @@
 # dotfiles
 dotfiles
 
-## Mac
+## ターミナル
+ターミナルはなんでも良いが、今は[Hyper](https://hyper.is/)を使用している。
 
-1. install brew
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/a001546/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
+## NeoVim
+NeoVimを利用することを前提としている。install scriptを実行する前にインストールしておく必要がある。
+https://github.com/neovim/neovim/wiki/Installing-Neovim
 
-2. install peco
+あとpython3関連モジュールも必要
 ```
-brew install peco
+python3 -m pip install --user --upgrade pynvim
 ```
-
-3. install neovim
-```
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-tar xzf nvim-macos.tar.gz
-sudo mv nvim-macos/bin/nvim /usr/local/bin/
-```
-
-4. run dotfileLink.sh
-```
-./dotfileLink.sh
-```
-
-`.config`がうまくリンクされない場合は既に存在する`.config`を別の場所にmoveしてください。
 
 
 ファイル配置前に以下のインストールをしてください
 
 - dein.vim
   - https://github.com/Shougo/dein.vim
-  - インストール方法は上記リポジトリのreadmeに書かれています
+  - インストール方法は上記リポジトリのreadmeに書かれている
