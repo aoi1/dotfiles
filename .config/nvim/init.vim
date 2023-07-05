@@ -135,34 +135,27 @@ let g:go_metalinter_autosave = 1
 "EOF
 "
 set completeopt=menu,menuone,noselect
+
 lua << EOF
-local lsp_installer = require("nvim-lsp-installer")
+local mason = require('mason').setup()
 local servers = {
   "gopls",
 }
 
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-
-  -- `sumneko_lua` をinstallしているなら `hello world` を表示します。
-  if server.name == 'sumneko_lua' then
-    print('hello world')
-  end
-
-  -- serverに対応しているfiletypeのbufferを開いたら、
-  -- 実行するfunctionを設定します。
-  -- sumneko_luaはluaのLSP serverなので、
-  -- luaのbufferを開いたら、実行するfunctionです。
-  opts.on_attach = function(client,buffer_number)
-    print(vim.inspect(client))
-    print(buffer_number)
-  end
-
-  -- LSPのsetupをします。
-  -- setupをしないとserverは動作しません。
-  server:setup(opts)
-end)
-
+  require('mason-lspconfig').setup_handlers({ function(server)
+    local opt = {
+      -- -- Function executed when the LSP server startup
+      -- on_attach = function(client, bufnr)
+      --   local opts = { noremap=true, silent=true }
+      --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+      --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
+      -- end,
+      capabilities = require('cmp_nvim_lsp').update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
+    }
+    require('lspconfig')[server].setup(opt)
+  end })
   -- Setup nvim-cmp.
   local cmp = require'cmp'
 
@@ -208,7 +201,7 @@ end)
   })
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['gopls'].setup {
     capabilities = capabilities
