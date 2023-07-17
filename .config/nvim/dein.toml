@@ -56,7 +56,10 @@ repo = 'nvim-lua/completion-nvim'
 repo = 'ray-x/lsp_signature.nvim'
 
 [[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
